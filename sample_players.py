@@ -5,8 +5,7 @@ own agent and example heuristic functions.
     ***********  YOU DO NOT NEED TO MODIFY ANYTHING IN THIS FILE  **********
     ************************************************************************
 """
-
-from random import randint
+import secrets
 
 
 def null_score(game, player):
@@ -159,7 +158,7 @@ class RandomPlayer():
         legal_moves = game.get_legal_moves()
         if not legal_moves:
             return (-1, -1)
-        return legal_moves[randint(0, len(legal_moves) - 1)]
+        return legal_moves[secrets.SystemRandom().randint(0, len(legal_moves) - 1)]
 
 
 class GreedyPlayer():

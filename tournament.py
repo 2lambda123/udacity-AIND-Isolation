@@ -12,7 +12,6 @@ once as the second player.  Randomizing the openings and switching the player
 order corrects for imbalances due to both starting position and initiative.
 """
 import itertools
-import random
 import warnings
 
 from collections import namedtuple
@@ -22,6 +21,7 @@ from sample_players import (RandomPlayer, open_move_score,
                             improved_score, center_score)
 from game_agent import (MinimaxPlayer, AlphaBetaPlayer, custom_score,
                         custom_score_2, custom_score_3)
+import secrets
 
 NUM_MATCHES = 5  # number of matches against each opponent
 TIME_LIMIT = 150  # number of milliseconds before timeout
@@ -54,7 +54,7 @@ def play_round(cpu_agent, test_agents, win_counts, num_matches):
 
         # initialize all games with a random move and response
         for _ in range(2):
-            move = random.choice(games[0].get_legal_moves())
+            move = secrets.choice(games[0].get_legal_moves())
             for game in games:
                 game.apply_move(move)
 
